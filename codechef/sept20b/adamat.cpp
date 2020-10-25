@@ -19,9 +19,7 @@
 #define so(x) sizeof(x)
 #define mod 1000000007
 #define N 100000
-
 using namespace std;
-
 int main() {
     #ifndef ONLINE_JUDGE
     freopen("input.txt", "r", stdin);
@@ -29,28 +27,25 @@ int main() {
     #endif
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-    int t,n,x;
+    ll n,t,ans;
     cin>>t;
     while(t--){
-        vector<int> v;
         cin>>n;
+        ans = 0;
+        int a[n][n];
         rep(i,0,n){
-            cin>>x;
-            v.push_back(x);
+            rep(j,0,n){
+                cin>>a[i][j];
+            }
         }
-        sort(v.begin(), v.end());
-        iter(i,v){
-            cout<<i<<' ';
+        dec(i,n-1,1){
+            // cout<<a[0][i]<<' '<<ans<<' '<<(ans & 1);
+            // nl;
+            if((a[0][i] == i+1) ^ ((ans & 1) == 0)){
+                ans++;
+            }
         }
-        nl;
-        rep(i,0,n){
-            cin>>x;
-            v[i] = x;
-        }
-        sort(v.begin(), v.end());
-        iter(i,v){
-            cout<<i<<' ';
-        }
+        cout<<ans;
         nl;
     }
     return 0;
